@@ -274,6 +274,39 @@
       position: relative;
     }
 
+
+    .main-video {
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-touch-callout: none;
+      pointer-events: none;
+    }
+
+    .sound-toggle {
+      position: absolute;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      z-index: 3;
+      min-height: 40px;
+      padding: 0 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(0,0,0,0.62);
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+      backdrop-filter: blur(12px);
+      transition: 0.2s ease;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.28);
+    }
+
+    .sound-toggle:hover {
+      background: rgba(0, 230, 118, 0.22);
+      border-color: rgba(0, 230, 118, 0.42);
+    }
+
     .phone-frame video {
       width: 100%;
       height: 100%;
@@ -451,19 +484,13 @@
           <div class="video-guide">
             <div class="phone-frame">
               <!-- Cambia "video.mp4" por el nombre de tu video vertical -->
-              <video src="video-capcut-curso.mp4" controls playsinline preload="metadata"></video>
+              <video class="main-video" src="video-capcut-curso.mp4" autoplay muted playsinline preload="auto" controlsList="nodownload noplaybackrate noremoteplayback" disablePictureInPicture oncontextmenu="return false"></video>
 
               <!-- Esta capa sirve como guía visual si todavía no cargas el video.
                    Si ya tienes video, puedes borrar este div completo. -->
-              <div class="video-placeholder">
-                <div>
-                  <div class="play">▶</div>
-                  <div class="placeholder-title">Curso de edición con CapCut</div>
-                  <p class="placeholder-text">
-                    Presiona play para ver la guía del curso.
-                  </p>
-                </div>
-              </div>
+              <button class="sound-toggle" type="button" aria-label="Activar sonido">
+                Activar sonido
+              </button>
             </div>
           </div>
         </div>
@@ -500,18 +527,50 @@
   </main>
 
   <script>
-    // Oculta la guía visual cuando el video tenga una fuente real y empiece a cargar.
-    const video = document.querySelector("video");
-    const placeholder = document.querySelector(".video-placeholder");
+    const video = document.querySelector(".main-video");
+    const soundButton = document.querySelector(".sound-toggle");
 
-    if (video && placeholder) {
-      video.addEventListener("loadeddata", () => {
-        placeholder.style.display = "none";
+    if (video) {
+      let maxWatchedTime = 0;
+      let internalChange = false;
+
+      // Intentar reproducción automática. Los navegadores suelen exigir que sea en silencio.
+      const tryAutoplay = () => {
+        video.muted = true;
+        video.play().catch(() => {});
+      };
+
+      window.addEventListener("load", tryAutoplay);
+      document.addEventListener("visibilitychange", () => {
+        if (!document.hidden) tryAutoplay();
       });
 
-      video.addEventListener("play", () => {
-        placeholder.style.display = "none";
+      // Bloquea que el usuario adelante el video.
+      video.addEventListener("timeupdate", () => {
+        if (!video.seeking) {
+          maxWatchedTime = Math.max(maxWatchedTime, video.currentTime);
+        }
       });
+
+      video.addEventListener("seeking", () => {
+        if (!internalChange && video.currentTime > maxWatchedTime + 0.3) {
+          internalChange = true;
+          video.currentTime = maxWatchedTime;
+          internalChange = false;
+        }
+      });
+
+      // Evita menú contextual de descarga.
+      video.addEventListener("contextmenu", (event) => event.preventDefault());
+
+      // Botón para activar/desactivar sonido sin mostrar controles nativos.
+      if (soundButton) {
+        soundButton.addEventListener("click", () => {
+          video.muted = !video.muted;
+          soundButton.textContent = video.muted ? "Activar sonido" : "Silenciar";
+          video.play().catch(() => {});
+        });
+      }
     }
   </script>
 </body>
