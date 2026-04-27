@@ -10,13 +10,13 @@
     :root {
       --bg: #0D0918;
       --bg-soft: #090611;
-      --green: #00e676;
-      --green-soft: #16c978;
+      --green: #140E2F;
+      --green-soft: #1D1447;
       --text: #f5fff9;
       --muted: #b7c9be;
       --glass: rgba(8, 16, 12, 0.72);
-      --border: rgba(0, 230, 118, 0.18);
-      --shadow: 0 30px 100px rgba(0, 230, 118, 0.12);
+      --border: rgba(20, 14, 47, 0.18);
+      --shadow: 0 30px 100px rgba(20, 14, 47, 0.12);
     }
 
     * {
@@ -37,7 +37,7 @@
       font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at 50% 0%, rgba(45, 20, 80, 0.18), transparent 34%),
+        radial-gradient(circle at 50% 0%, rgba(20, 14, 47, 0.18), transparent 34%),
         linear-gradient(180deg, #0D0918 0%, #0A0714 45%, #090611 100%);
       overflow-x: hidden;
     }
@@ -93,7 +93,7 @@
       margin-bottom: 18px;
       border-radius: 999px;
       border: 1px solid var(--border);
-      background: rgba(0, 230, 118, 0.06);
+      background: rgba(20, 14, 47, 0.06);
       color: #bdfbd7;
       font-size: 13px;
       font-weight: 800;
@@ -118,10 +118,9 @@
 
     .gradient-text {
       display: inline-block;
-      color: transparent;
-      background: linear-gradient(90deg, #43ff9b 0%, #2eff88 45%, #12c96b 100%);
-      background-clip: text;
-      -webkit-background-clip: text;
+      color: #AEABB1;
+      background: none;
+      -webkit-text-fill-color: #AEABB1;
     }
 
     .description {
@@ -160,7 +159,7 @@
       position: absolute;
       inset: -2px;
       border-radius: 0;
-      background: linear-gradient(135deg, rgba(0,230,118,0.38), transparent 42%, rgba(0,230,118,0.18));
+      background: linear-gradient(135deg, rgba(20, 14, 47, 0.38), transparent 42%, rgba(20, 14, 47, 0.18));
       z-index: -1;
       filter: blur(12px);
       opacity: 0.75;
@@ -172,7 +171,7 @@
       border-radius: 0;
       overflow: hidden;
       background:
-        linear-gradient(135deg, rgba(0,230,118,0.16), rgba(255,255,255,0.03)),
+        linear-gradient(135deg, rgba(20, 14, 47, 0.16), rgba(255,255,255,0.03)),
         #0a0f0c;
       border: 1px solid rgba(255,255,255,0.12);
       position: relative;
@@ -202,7 +201,7 @@
       cursor: pointer;
       text-align: center;
       background:
-        radial-gradient(circle at 50% 38%, rgba(0, 230, 118, 0.28), transparent 34%),
+        radial-gradient(circle at 50% 38%, rgba(20, 14, 47, 0.28), transparent 34%),
         linear-gradient(180deg, rgba(0,0,0,0.28), rgba(0,0,0,0.72));
       backdrop-filter: blur(2px);
       -webkit-backdrop-filter: blur(2px);
@@ -211,7 +210,7 @@
 
     .start-video-overlay:hover {
       background:
-        radial-gradient(circle at 50% 38%, rgba(0, 230, 118, 0.38), transparent 36%),
+        radial-gradient(circle at 50% 38%, rgba(20, 14, 47, 0.38), transparent 36%),
         linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,0,0,0.66));
     }
 
@@ -229,8 +228,8 @@
       border-radius: 50%;
       padding-left: 4px;
       color: #001d0f;
-      background: linear-gradient(135deg, #4dff9e, var(--green-soft));
-      box-shadow: 0 18px 48px rgba(0, 230, 118, 0.34);
+      background: linear-gradient(135deg, #1D1447, #140E2F);
+      box-shadow: 0 18px 48px rgba(20, 14, 47, 0.34);
       font-size: 28px;
       font-weight: 900;
     }
@@ -265,7 +264,7 @@
       padding: 34px;
       text-align: center;
       background:
-        radial-gradient(circle at 50% 20%, rgba(0,230,118,0.22), transparent 34%),
+        radial-gradient(circle at 50% 20%, rgba(20, 14, 47, 0.22), transparent 34%),
         linear-gradient(180deg, rgba(255,255,255,0.04), rgba(0,0,0,0.18));
     }
 
@@ -276,9 +275,9 @@
       display: grid;
       place-items: center;
       margin: 0 auto 18px;
-      background: rgba(0, 230, 118, 0.16);
-      border: 1px solid rgba(0, 230, 118, 0.35);
-      box-shadow: 0 0 44px rgba(0, 230, 118, 0.26);
+      background: rgba(20, 14, 47, 0.16);
+      border: 1px solid rgba(20, 14, 47, 0.35);
+      box-shadow: 0 0 44px rgba(20, 14, 47, 0.26);
       font-size: 30px;
       color: var(--green);
     }
@@ -309,16 +308,16 @@
       min-height: 52px;
       padding: 0 24px;
       border-radius: 16px;
-      border: 1px solid rgba(67, 255, 155, 0.24);
-      color: #06140c !important;
-      background: linear-gradient(135deg, #43ff9b 0%, #20db7d 52%, #12c96b 100%);
+      border: 1px solid rgba(20, 14, 47, 0.24);
+      color: #ffffff !important;
+      background: linear-gradient(135deg, #1D1447 0%, #2A1D63 52%, #140E2F 100%);
       text-decoration: none !important;
       font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       font-size: 15px;
       font-weight: 900;
       line-height: 1;
       cursor: pointer;
-      box-shadow: 0 16px 40px rgba(18, 201, 107, 0.22);
+      box-shadow: 0 16px 40px rgba(20, 14, 47, 0.22);
       transition: transform 0.22s ease, box-shadow 0.22s ease, filter 0.22s ease, background 0.22s ease;
       white-space: nowrap;
     }
@@ -328,7 +327,7 @@
     button.btn:hover {
       transform: translateY(-2px);
       filter: brightness(1.05);
-      box-shadow: 0 20px 48px rgba(18, 201, 107, 0.3);
+      box-shadow: 0 20px 48px rgba(20, 14, 47, 0.30);
     }
 
     .btn.secondary,
@@ -345,8 +344,8 @@
     .btn.secondary:hover,
     a.btn.secondary:hover,
     button.btn.secondary:hover {
-      border-color: rgba(67, 255, 155, 0.28);
-      background: linear-gradient(180deg, rgba(67,255,155,0.1), rgba(255,255,255,0.035));
+      border-color: rgba(20, 14, 47, 0.28);
+      background: linear-gradient(180deg, rgba(20, 14, 47, 0.10), rgba(255,255,255,0.035));
       color: #ffffff !important;
     }
 
@@ -404,7 +403,7 @@
     @media (max-width: 760px) {
       body {
         background:
-          radial-gradient(circle at 50% 0%, rgba(45, 20, 80, 0.16), transparent 32%),
+          radial-gradient(circle at 50% 0%, rgba(20, 14, 47, 0.16), transparent 32%),
           linear-gradient(180deg, #0D0918 0%, #0A0714 52%, #090611 100%);
       }
 
@@ -474,7 +473,7 @@
         width: min(315px, 88vw);
         padding: 7px;
         border-radius: 0;
-        box-shadow: 0 18px 60px rgba(0, 230, 118, 0.1);
+        box-shadow: 0 18px 60px rgba(20, 14, 47, 0.10);
       }
 
       .video-guide::before {
@@ -640,16 +639,16 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, #25D366 0%, #1ebe5d 100%);
+      background: linear-gradient(135deg, #1D1447 0%, #140E2F 100%);
       color: #ffffff;
       text-decoration: none;
-      box-shadow: 0 16px 35px rgba(37, 211, 102, 0.35);
+      box-shadow: 0 16px 35px rgba(20, 14, 47, 0.35);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .floating-whatsapp:hover {
       transform: translateY(-3px) scale(1.03);
-      box-shadow: 0 20px 42px rgba(37, 211, 102, 0.42);
+      box-shadow: 0 20px 42px rgba(20, 14, 47, 0.42);
     }
 
     .floating-whatsapp svg {
@@ -679,8 +678,8 @@
     }
 
     .cta-row .btn.secondary:hover {
-      border-color: rgba(67, 255, 155, 0.24);
-      background: linear-gradient(180deg, rgba(67,255,155,0.08), rgba(255,255,255,0.03));
+      border-color: rgba(20, 14, 47, 0.24);
+      background: linear-gradient(180deg, rgba(20, 14, 47, 0.08), rgba(255,255,255,0.03));
       color: #ffffff;
       box-shadow: 0 16px 40px rgba(0,0,0,0.22);
     }
@@ -696,7 +695,7 @@
     }
 
     .cta-row .btn.secondary::before {
-      background: #43ff9b;
+      background: #1D1447;
       opacity: 0.85;
     }
 
@@ -724,9 +723,7 @@
         </div>
 
         <div class="copy-block">
-          <div class="eyebrow"><span></span> Marketing, video y estrategia para vender más</div>
-
-          <h1>
+<h1>
             <span class="gradient-text">Aprende a editar videos</span> que atraen clientes y hacen ver tu negocio más profesional,
             incluso si empiezas desde cero.
           </h1>
