@@ -183,7 +183,7 @@
       user-select: none;
       -webkit-user-select: none;
       -webkit-touch-callout: none;
-      pointer-events: none;
+      pointer-events: auto;
     }
 
     .start-video-overlay {
@@ -217,7 +217,7 @@
 
     .start-video-overlay.hidden {
       opacity: 0;
-      pointer-events: none;
+      pointer-events: auto;
       visibility: hidden;
     }
 
@@ -711,6 +711,17 @@
       background: #000;
     }
 
+  
+    .cloudinary-video,
+    iframe.cloudinary-video {
+      pointer-events: auto !important;
+      cursor: pointer;
+    }
+
+    .phone-frame iframe {
+      pointer-events: auto !important;
+    }
+
   </style>
 </head>
 <body>
@@ -721,7 +732,7 @@
           <div class="video-guide">
             <div class="phone-frame">
               <!-- Cambia "video.mp4" por el nombre de tu video vertical -->
-              <iframe class="main-video cloudinary-video" src="https://player.cloudinary.com/embed/?cloud_name=dyjyiepov&public_id=Capcut_1_mq1cxs" allow="autoplay; fullscreen; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+              <iframe class="main-video cloudinary-video" src="https://player.cloudinary.com/embed/?cloud_name=dyjyiepov&public_id=Capcut_1_mq1cxs" allow="autoplay; fullscreen; encrypted-media; picture-in-picture" allowfullscreen frameborder="0" loading="lazy"></iframe>
 
               <!-- Esta capa sirve como guía visual si todavía no cargas el video.
                    Si ya tienes video, puedes borrar este div completo. -->
