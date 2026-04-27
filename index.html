@@ -701,6 +701,16 @@
       opacity: 0.85;
     }
 
+  
+    .phone-frame iframe,
+    .cloudinary-video {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+      background: #000;
+    }
+
   </style>
 </head>
 <body>
@@ -711,18 +721,11 @@
           <div class="video-guide">
             <div class="phone-frame">
               <!-- Cambia "video.mp4" por el nombre de tu video vertical -->
-              <video class="main-video" src="https://drive.google.com/uc?export=download&id=1QJBW2ZMTUqunZ2NxJRAizZNJ3Y0GSruQ" playsinline preload="metadata" controlsList="nodownload noplaybackrate noremoteplayback" disablePictureInPicture oncontextmenu="return false">
-                Tu navegador no puede reproducir este video.
-              </video>
+              <iframe class="main-video cloudinary-video" src="https://player.cloudinary.com/embed/?cloud_name=dyjyiepov&public_id=Capcut_1_mq1cxs" allow="autoplay; fullscreen; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>
 
               <!-- Esta capa sirve como guía visual si todavía no cargas el video.
                    Si ya tienes video, puedes borrar este div completo. -->
-              <button class="start-video-overlay" type="button" aria-label="Reproducir video">
-                <span class="start-icon">▶</span>
-                <span class="start-title">Toca para ver el video</span>
-                <small>Se reproducirá con audio</small>
-              </button>
-            </div>
+</div>
           </div>
         </div>
 
@@ -756,79 +759,7 @@
       </div>
     </section>
   </main>
-
-  <script>
-    const video = document.querySelector(".main-video");
-    const startOverlay = document.querySelector(".start-video-overlay");
-    const phoneFrame = document.querySelector(".phone-frame");
-
-    if (video) {
-      let maxWatchedTime = 0;
-      let internalChange = false;
-      let hasStarted = false;
-
-      const startVideoWithSound = () => {
-        hasStarted = true;
-        video.muted = false;
-        video.volume = 1;
-        video.play().then(() => {
-          if (startOverlay) startOverlay.classList.add("hidden");
-        }).catch(() => {
-          // Si algún navegador bloquea el audio, intenta reproducir en silencio como respaldo.
-          video.muted = true;
-          video.play().then(() => {
-            if (startOverlay) {
-              startOverlay.innerHTML = `
-                <span class="start-icon">🔊</span>
-                <span class="start-title">Toca para activar sonido</span>
-                <small>El video ya está reproduciéndose</small>
-              `;
-            }
-          }).catch(() => {});
-        });
-      };
-
-      if (startOverlay) {
-        startOverlay.addEventListener("click", (event) => {
-          event.stopPropagation();
-          startVideoWithSound();
-        });
-      }
-
-      if (phoneFrame) {
-        phoneFrame.addEventListener("click", () => {
-          if (!hasStarted) startVideoWithSound();
-        });
-      }
-
-      // Bloquea que el usuario adelante el video.
-      video.addEventListener("timeupdate", () => {
-        if (!video.seeking) {
-          maxWatchedTime = Math.max(maxWatchedTime, video.currentTime);
-        }
-      });
-
-      video.addEventListener("seeking", () => {
-        if (!internalChange && video.currentTime > maxWatchedTime + 0.3) {
-          internalChange = true;
-          video.currentTime = maxWatchedTime;
-          internalChange = false;
-        }
-      });
-
-      // Evita menú contextual de descarga.
-      video.addEventListener("contextmenu", (event) => event.preventDefault());
-
-      // Si el usuario vuelve a abrir la pestaña, no se fuerza autoplay; solo continúa si ya inició.
-      document.addEventListener("visibilitychange", () => {
-        if (!document.hidden && hasStarted && video.paused) {
-          video.play().catch(() => {});
-        }
-      });
-    }
-  </script>
-
-  <a class="floating-whatsapp" href="https://wa.me/573228296572?text=Hola%20Bromarketing%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+<a class="floating-whatsapp" href="https://wa.me/573228296572?text=Hola%20Bromarketing%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
     <svg viewBox="0 0 24 24" aria-hidden="true">
       <path d="M12 2.75c-4.97 0-9 3.83-9 8.56 0 1.66.5 3.22 1.37 4.53L3.2 20.97l4.66-1.22c1.21.73 2.64 1.15 4.14 1.15 4.97 0 9-3.83 9-8.56s-4.03-8.59-9-8.59Zm0 16.15c-1.4 0-2.73-.4-3.87-1.13l-.37-.23-2.42.63.64-2.33-.25-.38A6.58 6.58 0 0 1 4.99 11.3c0-3.62 3.15-6.56 7.01-6.56S19 7.68 19 11.3s-3.14 6.6-7 6.6Z"/>
       <path d="M9.16 8.55c-.19 0-.36.09-.46.23l-.48.67c-.15.21-.2.49-.12.74.35 1.08 1 2.09 1.9 2.98.9.9 1.92 1.55 3.02 1.9.25.08.53.03.74-.12l.66-.47c.15-.11.24-.28.24-.47v-.98c0-.3-.21-.56-.51-.62l-1.06-.21a.68.68 0 0 0-.65.21l-.25.28a.2.2 0 0 1-.2.05 4.62 4.62 0 0 1-1.48-.97 4.62 4.62 0 0 1-.97-1.48.2.2 0 0 1 .05-.2l.28-.25a.68.68 0 0 0 .21-.65l-.21-1.06a.64.64 0 0 0-.63-.51h-.98Z"/>
